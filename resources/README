@@ -1,0 +1,67 @@
+How to run:
+Run this program by running the MusicLibraryConsole class in java.
+"java MusicLibraryConsole"
+
+Once the program is running, you can type a command to add an artist, album, or track to the library, 
+listen to a track, view albums by an artist, view tracks on an album by an artist, or view top played 
+artists or tracks. The program will output a message showing success or failure.
+
+I have added a command "build sample" which runs all the commands from the given file, sample_in.txt,
+and prints the result of each command. 
+
+
+How have you gained confidence in your code?
+
+I am more sure of my ability to manage multiple data structures together, and I am now familiar with parsing strings
+with java's regex pattern matching.
+
+One of the things we'll be evaluating is how your code is organized. 
+Why did you choose the structure that you did? What principles were 
+important to you as you organized this code?
+
+I designed this program to be organized for readability and updateability as well as maximizing efficiency across
+operations.
+
+I built a class called MusicLibraryConsole to parse command line input into commands for the other class I built,
+MusicLibrary. Separating the logic of managing the data structures from the logic of string manipulation was 
+helpful because it meant fewer mistakes, and it meant that switching from a command line input to a different 
+format such as an app could be accomplished by switching the MusicLibraryConsole class for another input
+class. 
+
+Within the MusicLibrary class, I have inner classes for each Artist, Album, and Track. Inner classes made sense
+because modifying artists or tracks outside of the MusicLibrary methods could confuse the playcount ordering
+in the library (which will be detailed further). These classes could be their own files if we want to use 
+them in other applications from the library where we don't need the play count ordering. Creating objects for 
+these classes allowed tracks to maintain knowledge of their album and albums to know which artist created 
+them meaning we can keep listings of tracks independent from artists and still differentiate between tracks 
+with the same title on different albums. New classes also allowed Artists and Albums to maintain play counts 
+of their own instead of calculating play counts from the sum of their tracks' play counts. If this was 
+production code and we wanted to add or update information or functionality, that process would also be made 
+simpler by the class separation. 
+
+
+What are the performance characteristics of your implementation? Does it perform some operations faster than
+others? Explain any tradeoffs you made in architecting your solution.
+
+The simplest performance optimization comes from keeping play counts for each album and artist even though
+these can be derived from the sum of the play counts of their tracks. Calculating play counts for each album
+or artist from tracks is an O(N) operation where N is the number of tracks, but by keeping count for albums and 
+artists we can know those play counts in constant time. This adds complexity to the code and introduces the 
+possibility of a logic error resulting in play count discrepancies, but with careful coding and good method 
+modularity, this shouldn't be an issue.
+
+The biggest factors in the performance of this program are the data structures used in the MusicLibrary class.
+The main collective data structures are HashMaps and TreeMaps. A HashMap of artist names to 
+artists is our access point for artists, albums, and tracks. Each artist contains a HashMap of album titles 
+to albums, and each album a HashMap of track titles to tracks.This nested HashMap structure allows a 
+constant-time lookup process; finding an album, track, or artist is O(1) and will not become slower as the 
+library grows in size. 
+
+HashMaps also have constant time insertion and deletion, but the MusicLibrary class does not, because we are 
+maintaining two TreeMaps concurrently with the main nested HashMap. We have a TreeMap of play counts to tracks and 
+a TreeMap of play counts to artists to make listing top artists or tracks more efficient. The TreeMap structure's 
+ordering allows listing top X tracks or artists to be O(X) instead of related to the size of the library. The 
+tradeoff is less efficiency in adding or removing objects, which becomes an O(log(n)) process where n is the size 
+of the current library. Listening to tracks is also O(log(n)) because their places and their artists' 
+places must be updated in the play count tree maps. The advantage is that maintaining ordering allows us to 
+avoid performing a cumbersome sort with complexity O(nlog(n)) every time we want to see top tracks or artists. 
