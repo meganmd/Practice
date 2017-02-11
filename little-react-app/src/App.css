@@ -1,21 +1,51 @@
+#root {
+  height: 100vh;
+}
+
 .App {
-  text-align: center;
+  min-height: 100%;
+  background-color: #pink;
+  height: 100%;
+
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
   height: 80px;
 }
 
 .App-header {
   background-color: #222;
-  height: 150px;
+  height: 100px;
   padding: 20px;
-  color: white;
+  color: #61DAFB;
 }
 
 .App-intro {
   font-size: large;
+}
+
+.RecipeCard {
+  width: 30vw;
+  padding: 20px;
+  padding-left: 40px;
+  margin: 20px;
+  background-color: #61DAFB;
+  color:222;
+}
+
+.IngredientList, .RecipeList, .HeaderList {
+  list-style: none;
+}
+
+.IngredientList {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.HeaderList li {
+  float: left;
+  height: 80px;
+  padding: 20px;
 }
 
 @keyframes App-logo-spin {

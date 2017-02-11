@@ -1,19 +1,64 @@
 import React, { Component } from 'react';
+import RecipeCard from './RecipeCard.js';
 import logo from './logo.svg';
+import book from './book.svg';
 import './App.css';
 
 class App extends Component {
   render() {
+    const recipes = [
+      {
+        "name" : "Cake",
+        "ingredientList" : [
+          {
+            "amount" : "3.5 cups",
+            "name" : "Sugar"
+          },
+          {
+            "amount" : "3",
+            "name" : "Eggs"
+          },
+          {
+            "amount" : "3 cups",
+            "name" : "Flour"
+          }
+        ],
+        "directions" : "Cook cake"
+      },
+      {
+        "name" : "Pie",
+        "ingredientList" : [
+          {
+            "amount" : "3.5 cups",
+            "name" : "Sugar"
+          },
+          {
+            "amount" : "3",
+            "name" : "Eggs"
+          },
+          {
+            "amount" : "3 cups",
+            "name" : "Flour"
+          }
+        ],
+        "directions" : "Cook pie"
+      }
+    ];
     return (
       <div className="App">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <ul className="HeaderList">
+            <li><img src={book} className="App-logo" alt="logo" /></li>
+            <li><h1>My Recipes</h1></li>
+          </ul>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <RecipeCard title="Pie"/>
+        <ul className="RecipeList">
+          {recipes.map(function(recipe, i) {
+            return (
+              <li><RecipeCard recipe={recipe}/></li>
+            );
+          })}
+        </ul>
       </div>
     );
   }

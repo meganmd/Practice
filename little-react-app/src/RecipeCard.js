@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import IngredientList from './IngredientList.js';
 import './App.css';
 
 class RecipeCard extends Component {
@@ -7,15 +7,12 @@ class RecipeCard extends Component {
     return (
       <div className="RecipeCard">
         <div className="RecipeCard-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>{this.props.title}</h2>
+          <h2>{this.props.recipe.name}</h2>
         </div>
-        <ls className="IngredientList">
-          <li>Ingredient one</li>
-        </ls>
+        <IngredientList ingredientList={this.props.recipe.ingredientList}/>
       </div>
     );
   }
 }
 
-export default App;
+export default RecipeCard;
