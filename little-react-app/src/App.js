@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import RecipeCard from './RecipeCard.js';
-import logo from './logo.svg';
-import book from './book.svg';
+import squiggle from './squiggle.svg';
 import './App.css';
 
 class App extends Component {
@@ -48,7 +47,7 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <ul className="HeaderList">
-            <li><img src={book} className="App-logo" alt="logo" /></li>
+            <li><img src={squiggle} className="Squiggle" alt="squiggle" /></li>
             <li><h1>My Recipes</h1></li>
           </ul>
         </div>
