@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import AddUserCard from './AddUserCard.js';
 import './App.css';
 import Client from './Client.js';
 
@@ -31,6 +32,7 @@ class App extends Component {
             );
           })}
         </p>
+        <AddUserCard></AddUserCard>
       </div>
     );
   }

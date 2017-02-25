@@ -13,6 +13,7 @@ db.serialize(function() {
 });
 
 app.get('/api/listUsers', function(request, response) {
+
   db.all("SELECT username FROM users", function(err, rows){
         response.setHeader('Content-Type', 'application/json');
         response.json(rows);
@@ -22,6 +23,9 @@ app.get('/api/listUsers', function(request, response) {
 })
 
 app.post('/api/addUser', function(request, response) {
+  console.log("Adding...");
+  console.log(request);
+  console.log(request.body);
   db.run("INSERT INTO users (username, password) VALUES (?, ?)", request.body.username, request.body.password);
 })
 

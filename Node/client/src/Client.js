@@ -15,6 +15,19 @@ function getUser(uid, cb) {
     .then(cb);
 }
 
+function addUser(username, password, cb) {
+  return fetch('api/addUser', {
+    method: "post",
+    body: JSON.stringify({
+      username: username,
+      password: password,
+      lookforme:"helloworld"
+    })
+  }).then(checkStatus)
+    .then(parseJSON)
+    .then(cb);
+}
+
 function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
     return response;
@@ -30,5 +43,5 @@ function parseJSON(response) {
   return response.json();
 }
 
-const Client = { getUsers };
+const Client = { getUsers, addUser };
 export default Client;
