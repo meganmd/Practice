@@ -17,8 +17,11 @@ class App extends Component {
     });
   }
 
-  render() {
+  componentWillMount() {
     this.getUsers();
+  }
+
+  render() {
     return (
       <div className="App">
         <div className="App-header">

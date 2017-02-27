@@ -3,6 +3,9 @@ var app = express();
 var fs = require("fs");
 var sqlite = require("sqlite3").verbose();
 var db = new sqlite.Database("./db/exampleDB.db");
+var bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 db.serialize(function() {
     db.run("CREATE TABLE IF NOT EXISTS users (username TEXT, password TEXT)");
@@ -24,9 +27,10 @@ app.get('/api/listUsers', function(request, response) {
 
 app.post('/api/addUser', function(request, response) {
   console.log("Adding...");
-  console.log(request);
+  //console.log(request);
   console.log(request.body);
   db.run("INSERT INTO users (username, password) VALUES (?, ?)", request.body.username, request.body.password);
+  response.end();
 })
 
 var server = app.listen(3003, function() {

@@ -16,12 +16,17 @@ function getUser(uid, cb) {
 }
 
 function addUser(username, password, cb) {
-  return fetch('api/addUser', {
-    method: "post",
+  return fetch('api/addUser',
+  {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    method: "POST",
     body: JSON.stringify({
       username: username,
       password: password,
-      lookforme:"helloworld"
+      lookforme: "helloworld"
     })
   }).then(checkStatus)
     .then(parseJSON)
