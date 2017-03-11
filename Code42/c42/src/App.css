@@ -1,0 +1,83 @@
+.App {
+  text-align: left;
+  background-color: black;
+  height: 100%;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  padding:40px;
+  padding-left: 60px;
+  left:margin 60px;
+  color: white;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color:black;
+}
+a:hover {
+  font-weight: bold;
+}
+
+.Code42MembersList {
+  text-align: left;
+  padding:0px;
+  margin-left:50px;
+  margin-right: 80px;
+}
+
+.MemberCard {
+ width: 100%;
+ border-style: solid;
+ border-width: 1px;
+ margin:20px;
+ display: flex;
+ overflow:hidden;
+ background-color: white;
+}
+
+.identity {
+  align-items: stretch;
+  float:left;
+  margin: 20px;
+  padding-right: 20px;
+  border-right-style: solid;
+  border-right-width: 1px;
+  height: auto;
+  overflow: hidden;
+}
+
+.identity>img {
+  width: 150px;
+  height: 150px;
+}
+
+.identity>div {
+  width: 150px;
+  padding-top: 10px;
+  text-align: right;
+}
+
+.MemberCard > ul {
+  float:left;
+  margin:20px;
+  padding:0;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
