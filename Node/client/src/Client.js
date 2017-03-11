@@ -26,7 +26,6 @@ function addUser(username, password, cb) {
     body: JSON.stringify({
       username: username,
       password: password,
-      lookforme: "helloworld"
     })
   }).then(checkStatus)
     .then(parseJSON)
@@ -48,5 +47,5 @@ function parseJSON(response) {
   return response.json();
 }
 
-const Client = { getUsers, addUser };
+const Client = { getUsers, addUser, getUser };
 export default Client;

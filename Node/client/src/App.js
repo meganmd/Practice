@@ -8,7 +8,9 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {users:[]};
+    this.getUsers = this.getUsers.bind(this);
   }
+  
   getUsers() {
     Client.getUsers((users) => {
       this.setState({
@@ -35,7 +37,9 @@ class App extends Component {
             );
           })}
         </p>
-        <AddUserCard></AddUserCard>
+        <AddUserCard
+          updateUsers={this.getUsers}
+        />
       </div>
     );
   }

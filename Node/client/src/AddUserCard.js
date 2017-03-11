@@ -20,8 +20,8 @@ class AddUserCard extends Component {
   }
 
   addUser() {
-    console.log("adding");
     Client.addUser(this.state.username, this.state.password, function(){});
+    this.props.updateUsers();
   }
 
 

@@ -17,12 +17,18 @@ db.serialize(function() {
 
 app.get('/api/listUsers', function(request, response) {
 
+  db.all("SELECT * FROM users", function(err, rows){
+        response.setHeader('Content-Type', 'application/json');
+        response.json(rows);
+    });
+})
+
+app.get('/api/listUsernames', function(request, response) {
+
   db.all("SELECT username FROM users", function(err, rows){
         response.setHeader('Content-Type', 'application/json');
         response.json(rows);
     });
-
-
 })
 
 app.post('/api/addUser', function(request, response) {
