@@ -40,14 +40,6 @@ class Slice extends Component {
   }
 
   componentDidMount() {
-    /*if(this.state.load < .5) {
-      console.log("hi")
-      this.increment();
-      setTimeout(
-        this.componentDidMount(),
-        6000
-      )
-    }*/
     this.timerID = setInterval(
       () => this.increment(),
       15
@@ -58,16 +50,16 @@ class Slice extends Component {
     var coordinates = this.getCoordinates(this.props.r, this.props.a, this.props.quantity, this.props.total)
     //console.log(coordinates);
     var path = [
-      'M', this.props.r*1.5, this.props.r*1.5,
-      'L', coordinates.start.x, coordinates.start.y,
+      'M', this.props.r*1.5, this.props.startY + this.props.r*1.5,
+      'L', coordinates.start.x, this.props.startY + coordinates.start.y,
       'A',  this.props.r, this.props.r, 0,
-            (this.props.quantity/this.props.total > .5 ? 1 : 0), 1,
-            coordinates.end.x, coordinates.end.y,
+            (this.props.quantity/this.props.total*this.state.load > .5 ? 1 : 0), 1,
+            coordinates.end.x, this.props.startY + coordinates.end.y,
       'Z'
     ].join(' ');
 
     return(
-      <path className="Slice" style={{"transformOrigin":this.props.r*1.5 + "px " + this.props.r*1.5 + "px"}}
+      <path className="Slice" style={{"transformOrigin":this.props.r*1.5 + "px " + (this.props.startY + this.props.r*1.5) + "px"}}
         fill={this.props.color}
         d={path}
       />
@@ -125,14 +117,19 @@ class Pie extends Component {
     }
     //console.log(slices);
     return (
-      <svg width={this.props.includeKey ? this.props.r*3+200 : this.props.r*3} height={this.props.r*3}>
-        {slices.map(function(element, i){
-          return(
-            <Slice key={i} color={element.color} quantity={element.quantity} r={element.r} a={element.a} total={a}/>
+      <svg width={this.props.includeKey ? this.props.r*3+200 : this.props.r*3}
+           height={this.props.title ? this.props.r*3 + 50 : this.props.r*3}>
+        {this.props.title ?
+          <text x={this.props.r/2} y={60} >{this.props.title}</text> :
+          ""
+        }
+        {slices.map((element, i) => {
+          return (
+            <Slice startY={this.props.title ? 50 : 0} key={i} color={element.color} quantity={element.quantity} r={element.r} a={element.a} total={a}/>
           )
         })}
         {this.props.includeKey ?
-          <Key slices={slices} height={this.props.r*3} startX={300} startY={0}/>
+          <Key slices={slices} height={this.props.r*3} startX={300} startY={this.props.title ? 50 : 0}/>
 
       : ""}
       </svg>
