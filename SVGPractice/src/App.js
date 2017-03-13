@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Pie from './Pie.js';
+import {Pie, PercentPie} from './Pie.js';
 
 class App extends Component {
   constructor(props) {
@@ -30,10 +30,7 @@ class App extends Component {
           {value:this.state.sector3, color:"yellow", name:"Fred"},
           {value:this.state.sector4, color:"green", name:"Bill"}
         ]}/>
-        <Pie r={100} includeKey={false} slices={[
-          {value:this.state.sector4, color:"lightblue", name:"thing"},
-          {value:100-this.state.sector4, color:"transparent", name:"not"}
-        ]}/>
+        <PercentPie r={100} percent={this.state.sector4} color="lightblue"/>
         <div>
           <input type="number" name="sector1" value={this.state.sector1} onChange={this.handleChange}/>
           <input type="number" name="sector2" value={this.state.sector2} onChange={this.handleChange}/>

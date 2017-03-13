@@ -2,6 +2,16 @@ import React, { Component } from 'react';
 import './App.css';
 import './Pie.css';
 
+function PercentPie(props) { //r, percent, color
+  return(
+    <Pie r={props.r} includeKey={false}
+    slices={[
+      {value:props.percent%100, color:props.color,},
+      {value:100-props.percent%100, color:"transparent"},
+    ]}/>
+  )
+}
+
 class Slice extends Component {
   constructor(props) {
     super(props);
@@ -130,4 +140,7 @@ class Pie extends Component {
   }
 }
 
-export default Pie;
+export {
+  Pie,
+  PercentPie
+};
