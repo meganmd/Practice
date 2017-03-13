@@ -1,3 +1,16 @@
+
 .Slice:hover{
-  border: 5px;
+  transform: scale(1.05);
+  transition-duration: .5s;
+}
+
+.Slice{
+
+}
+
+@keyframes pie {
+  0% {fill:transparent;
+      transform:scale(0);}
+  100% {fill:auto;
+      transform:scale(1);}
 }

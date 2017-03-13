@@ -31,8 +31,8 @@ class App extends Component {
           {value:this.state.sector4, color:"green", name:"Bill"}
         ]}/>
         <Pie r={100} includeKey={false} slices={[
-          {value:60, color:"lightblue", name:"thing"},
-          {value:40, color:"transparent", name:"not"}
+          {value:this.state.sector4, color:"lightblue", name:"thing"},
+          {value:100-this.state.sector4, color:"transparent", name:"not"}
         ]}/>
         <div>
           <input type="number" name="sector1" value={this.state.sector1} onChange={this.handleChange}/>
