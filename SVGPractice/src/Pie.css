@@ -4,13 +4,23 @@
   transition-duration: .5s;
 }
 
-.Slice{
-
+.Key {
+  animation-name: key;
+  animation-duration: 1s;
+}
+.KeyIcon {
+  animation-name: keyItem;
+  animation-duration: 1s;
 }
 
-@keyframes pie {
+@keyframes keyItem {
+  0% {fill:transparent;}
+  100% {fill:auto;}
+}
+
+@keyframes key {
   0% {fill:transparent;
-      transform:scale(0);}
+    transform:translateY(-20px)}
   100% {fill:auto;
-      transform:scale(1);}
+    transform:translate(0);}
 }

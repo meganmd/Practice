@@ -73,11 +73,11 @@ function Key(props) {
     total +=props.slices[i].quantity;
   }
   return(
-    <g>
+    <g className="Key">
       {props.slices.map((slice, i) => {
         return(
           <g key={i}>
-            <rect x={props.startX + 10}
+            <rect className="KeyIcon" x={props.startX + 10}
               y={props.startY + props.height/2 - (props.slices.length * 40 / 2) + i*40}
               height={10} width={10} fill={slice.color}/>
             <text x={props.startX + 30}
